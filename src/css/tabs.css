@@ -1,0 +1,21 @@
+.tab-selection {
+    color: #e0e3ff;
+}
+.ant-tabs-nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: #e0e3ff;
+}
+.ant-tabs-tab {
+    width: 50%;
+    justify-content: center;
+    color: #e0e3ff;
+}
+.ant-tabs-tab-btn {
+    color: #e0e3ff;
+}
+.ant-tabs-tab-active {
+    font-weight: bold;
+}

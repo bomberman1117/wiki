@@ -1,0 +1,46 @@
+table{ 
+    border-style: solid;
+    border-width: 1px;
+    border-color: #373845;
+}
+.ant-table-container .ant-table-content table tbody tr:hover td {
+    background: #1F202F !important;
+    box-shadow: none !important;
+}
+.ant-table-container .ant-table-content table tbody tr td {
+    border-bottom-width: 0px;
+}
+.ant-table-container .ant-table-content table thead tr th {
+    background-color: #282938;
+    color: #EFEFF0;
+    border-style: dashed;
+    text-align: center;
+}
+.ant-table-row {
+    border-bottom-color: black;
+}
+.ant-table-cell {
+    text-align: center;
+    background-color: #282938;
+    color: #EFEFF0;
+    font-size: medium;
+}
+.tags {
+    text-align: left;
+}
+.ant-tag {
+    text-shadow: 2px 2px 2px #282938;
+    font-size: medium;
+    font-family:Impact, 'Arial Narrow Bold', sans-serif
+}
+.pokedex-image {
+    width: 50px;
+    height: auto;
+}
+.pagination {
+    justify-content: center;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    height: 100%;
+}
