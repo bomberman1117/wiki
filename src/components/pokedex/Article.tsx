@@ -22,7 +22,7 @@ const Article = ({
         key: counter++,
         label: "Summary",
         children: input.summary,
-        extra: is_admin ? editIcon("summary") : null,
+        extra: is_admin ? icons("summary") : null,
         collapsible: "disabled",
       });
     }
@@ -33,13 +33,13 @@ const Article = ({
           label: titleize(key),
           children: <div>{input[key]}</div>,
           collapsible: is_admin ? "icon" : null,
-          extra: is_admin ? editIcon(key) : null,
+          extra: is_admin ? icons(key) : null,
         });
       }
     }
     return <Collapse items={snippets} defaultActiveKey={0} />;
   };
-  const editIcon = (key: string) => {
+  const icons = (key: string) => {
     return (
       <div>
         {key === "summary" ? null : (
