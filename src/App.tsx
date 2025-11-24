@@ -8,6 +8,7 @@ import HumanEntry from "./pages/HumanEntry.tsx";
 import PokedexEntry from "./pages/PokedexEntry.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/App.css";
+import Post from "./pages/Post.tsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/pokedex/:name" element={<PokedexEntry />} />
             <Route path="/humans" element={<HumanDex />} />
             <Route path="/humans/:name" element={<HumanEntry />} />
+            <Route path="/post" element={<Post />} />
           </Route>
           <Route path="/admin" element={<Layout />}>
             <Route path="/admin" element={<NewUpdate />} />

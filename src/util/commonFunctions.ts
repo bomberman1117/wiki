@@ -77,3 +77,8 @@ export const getColor = (type: number): any => {
 export const titleize = (input: string): string => {
     return input.charAt(0).toLocaleUpperCase() + input.substring(1)
 }
+export const getStatNames = () => {
+    if(import.meta.env.SAFE_MODE)
+        return ["Stamina", "Phs ATK", "Phs DEF", "Speed", "Spc ATK", "Spc DEF"]
+    return ["Stamina", "Top ATK", "Top DEF", "Speed", "Bot ATK", "Bot DEF"]
+}

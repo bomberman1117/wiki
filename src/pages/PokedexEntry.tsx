@@ -1,14 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  ArrowLeftOutlined,
-  EditOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import Summary from "../components/pokedex/Summary";
 import "../css/style.css";
 import "../css/collapse.css";
+import '../css/article.css'
 import Article from "../components/pokedex/Article";
 
 //The page format of a wiki entry for a single pokemon
@@ -45,13 +42,7 @@ const PokedexEntry = ({ is_admin = false }: { is_admin?: boolean }) => {
       <div className="row">
         {/* split the page the doisplay pokemon's data, filling the majority of the page with theh pokemon's articles */}
         <div className="col-9">
-          {
-            <Article
-              article={article}
-              is_admin={is_admin}
-              title={pageData.name}
-            />
-          }
+          <Article is_admin={is_admin} article={article} title={pageData.name} />
         </div>
         <div className="col-3">
           {/* Fill the rest of the page with a stat summary filled with information from the earlier api call */}
