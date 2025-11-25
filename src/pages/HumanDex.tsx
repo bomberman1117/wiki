@@ -7,7 +7,7 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import "../css/table.css";
 import "../css/style.css";
 
-const HumanDex = () => {
+const HumanDex = ({is_admin = false}: {is_admin?: boolean}) => {
   const [humans, setHumans] = useState<any>([]);
   const navigate = useNavigate();
   useEffect(() => {
@@ -100,7 +100,7 @@ const HumanDex = () => {
           pagination={pagination}
           rowKey={"key"}
           onRow={(record: any) => ({
-            onClick: () => navigate(`/humans/${record.name}`),
+            onClick: () => navigate((is_admin ? `/admin` : '') +`/humans/${record.name}`),
           })}
         />
       </div>

@@ -47,10 +47,12 @@ const Article = ({ is_admin = false, article = [], title = "Error"}: { is_admin?
         if(value.body == 'text')
             value.body = body
 
-        article[index] = value
-        console.log(article)
         const res = axios
-        .post(`http://localhost:3030/edit/${title}`, { snippets: article})
+        .post(`http://localhost:3030/edit/${title}`, { 
+            title: article[index].title,
+            newTitle: value.title,
+            body: value.body
+        })
         .then(() => {
             setIsEditing(-1)
             window.location.reload()

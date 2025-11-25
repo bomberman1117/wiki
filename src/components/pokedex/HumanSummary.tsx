@@ -16,6 +16,14 @@ const HumanSummary = ({ entry = {} }: { entry: any }) => {
     speed: entry.speed,
     stamina: entry.stamina,
   };
+  const section = (input: string, data: any) => {
+    return (
+      <div className="title">
+        <div>{input}</div>
+        <div className="body">{data}</div>
+      </div>
+    );
+  };
   return (
     <div className="summary">
       <div className="container">
@@ -23,6 +31,7 @@ const HumanSummary = ({ entry = {} }: { entry: any }) => {
           <div className="name">{entry.name}</div>
         </div>
         <img src={imgURL} alt={entry.name} />
+        {section("Pronouns", entry.pronouns)}
         <div className="title">
           <div>Type(s)</div>
           <div className="body">

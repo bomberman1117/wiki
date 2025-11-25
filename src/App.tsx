@@ -9,6 +9,7 @@ import PokedexEntry from "./pages/PokedexEntry.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./css/App.css";
 import Post from "./pages/Post.tsx";
+import AddPartyPokemon from "./pages/AddPartyPokemon.tsx";
 
 function App() {
   return (
@@ -33,8 +34,9 @@ function App() {
               path="/admin/pokedex/:name"
               element={<PokedexEntry is_admin={true} />}
             />
-            <Route path="/admin/humans" element={<HumanDex />} />
-            <Route path="/admin/humans/:name" element={<HumanEntry />} />
+            <Route path="/admin/humans" element={<HumanDex is_admin={true} />} />
+            <Route path="/admin/humans/:name" element={<HumanEntry is_admin={true} />} />
+            < Route path="/admin/addPokemon" element={<AddPartyPokemon />} />
           </Route>
         </Routes>
       </BrowserRouter>

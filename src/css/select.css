@@ -1,0 +1,22 @@
+.pokemon-form {
+    width: 50%;
+    justify-self: center;
+}
+
+.ant-checkbox-wrapper {
+
+    color: #e0e3ff
+}
+.ant-select {
+    width: 100%
+}
+.section {
+    margin: 10px;
+}
+input {
+    color: #e0e3ff;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #282938;
+    border: none
+}
