@@ -3,13 +3,10 @@
     border-width: 5px;
     border-radius: 10px;
     text-align: center;
-    width: 100%
+    width: 100%;
 }
 .container {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 10px;
 }
 .name-id {
     width: auto;
@@ -30,6 +27,8 @@
     color: #1f1f1f;
     border-radius: 5px;
     vertical-align: middle;
+    padding: 2px;
+    margin: 2px;
 }
 img {
     width: 100%;

@@ -10,7 +10,7 @@ import Article from "../components/pokedex/Article";
 
 //The page format of a wiki entry for a single pokemon
 const PokedexEntry = ({ is_admin = false }: { is_admin?: boolean }) => {
-  const [article, setArticle] = useState<any>({});
+  const [article, setArticle] = useState<any>();
   //get the parameteres of the url
   const params = useParams();
   //set up use states for the different API calls
@@ -26,15 +26,17 @@ const PokedexEntry = ({ is_admin = false }: { is_admin?: boolean }) => {
         );
         const text = await axios.get(
           `http://localhost:3030/article/${params.name}`
-        );
-        setPageData(res.data[0]);
-        setArticle(text.data);
+        ).then((text) => {
+          setArticle(text.data)
+
+          setPageData(res.data[0]);
+        });
       } catch (err) {
         console.log(err);
       }
     };
     fetchPokemon();
-  }, [params.name]);
+  }, []);
   return (
     <div className="pokedex-entry">
       {/*Display pokemon name at the top of the page*/}

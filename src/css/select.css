@@ -11,7 +11,9 @@
     width: 100%
 }
 .section {
+    width: 100%;
     margin: 10px;
+    justify-content: space-evenly
 }
 input {
     color: #e0e3ff;
@@ -19,4 +21,7 @@ input {
     border-radius: 10px;
     background-color: #282938;
     border: none
+}
+.exp-input {
+    width: 100%
 }

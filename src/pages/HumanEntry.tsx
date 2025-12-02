@@ -12,31 +12,36 @@ const HumanEntry = ({is_admin = false}: {is_admin?: boolean}) => {
   const [pageData, setPageData] = useState<any>({});
   const [article, setArticle] = useState<any>({})
   const [party, setParty] = useState<any>([])
+  const [humans, setHumans] = useState<any>([])
   const navigate = useNavigate();
   useEffect(() => {
+    const id = params.name
+    const setFullParty = (first: any[], second: any[]) => {
+      setParty(first.concat(second))
+    }
     const fetchPokemon = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3030/humans/${params.name}`
+          `http://localhost:3030/humans/${id}`
         );
         const text = await axios.get(
-          `http://localhost:3030/article/${params.name}`
+          `http://localhost:3030/article/${id}`
         );
         const party = await axios.get(
-          `http://localhost:3030/party/${params.name}`
+          `http://localhost:3030/party/${id}`
         );
+        const partyHumans = await axios.get(
+          `http://localhost:3030/humanParty/${id}`
+        )
         setPageData(res.data[0]);
-        setParty(party.data)
         setArticle(text.data);
-
-        return text.data
+        setFullParty(party.data, partyHumans.data)
 
       } catch (err) {
         console.log(err);
       }
     };
-    fetchPokemon().then((res) => console.log(res));
-    console.log()
+    fetchPokemon();
   }, [params.name]);
   return (
     <div className="pokedex-entry">
@@ -50,11 +55,12 @@ const HumanEntry = ({is_admin = false}: {is_admin?: boolean}) => {
           <HumanSummary entry={pageData} />
         </div>
       </div>
-      
-      <button onClick={() => navigate(-1)}>
-        <ArrowLeftOutlined />
-        {" Back"}
-      </button>
+      <div className="row">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          <ArrowLeftOutlined />
+          {" Back"}
+        </button>
+      </div>
     </div>
   );
 };

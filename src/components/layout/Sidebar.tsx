@@ -4,11 +4,11 @@ const Sidebar = () => {
   return (
     <div className="Sidebar">
       <a href="/">
-        <img
+        {import.meta.env.VITE_SAFE_MODE == 1 && <img
           className="logo"
           src="/images/Logo.png"
           alt={"Welcome to Amoros"}
-        />
+        />}
       </a>
       <div>
         <a href="/pokedex">Pokedex</a>

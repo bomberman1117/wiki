@@ -6,7 +6,7 @@ import "../css/select.css";
 const AddPartyPokemon = () => {
   const [humans, setHumans] = useState<any>([]);
   const [pokes, setPokemon] = useState<any>([]);
-  const [selection, setSelection] = useState<any>({human: 0, pokemon: 0, name: "none", pronouns: "It/Its", in_party: false })
+  const [selection, setSelection] = useState<any>({human: 0, pokemon: 0, name: "none", pronouns: "It/Its", in_party: false, exp: 0 })
 
   let humanData: any[] = [];
   let pokemonData: any[] = [];
@@ -43,6 +43,10 @@ const AddPartyPokemon = () => {
     selection.pronouns = e.target.value;
 
   };
+  const setExp = (e: any) => {
+    const value = e.target.value
+    selection.exp = value
+  }
 
   const onChange = (e: any) => {
     selection.in_party = e.target.checked;
@@ -52,14 +56,13 @@ const AddPartyPokemon = () => {
     try {
       await axios.post("http://localhost:3030/addToParty",
         {
-          pokedex_id: selection.pokemon,
+          pokemon_id: selection.pokemon,
           human_id: selection.human,
           name: selection.name,
           pronouns: selection.pronouns,
           in_party: selection.in_party,
-        });
-
-        window.location.reload()
+          exp: selection.exp
+        }).then(() => window.location.reload());
     } catch (err) {
       console.log(err);
     }
@@ -79,20 +82,33 @@ const AddPartyPokemon = () => {
   return (
     <div className="pokemon-form">
       <div className="section">
-        <input type="text" placeholder="Name" onChange={setName} />
-      </div>
-      <div className="section">
-        <input type="text" placeholder="Pronouns" onChange={setPronouns} />
+        <div>
+          <input id="name" type="text" placeholder="Name" onChange={setName} />
+        </div>
+        <div>
+          <input id="pronouns" type="text" placeholder="Pronouns" onChange={setPronouns} />
+        </div>
+        <div>
+          <input className="exp-input" id="exp" type="number" placeholder="EXP" onChange={setExp} min={0} max={10} />
+        </div>
       </div>
       <div className="section">
         <Select 
+          showSearch={true}
+          optionFilterProp= {'label'}
           options={humanData} 
           placeholder="Trainer" 
           onSelect={selectHuman}
         />
       </div>
       <div className="section">
-        <Select options={pokemonData} placeholder="Pokémon" onSelect={selectPokemon} />
+        <Select 
+          showSearch={true}
+          optionFilterProp= {'label'}
+          options={pokemonData} 
+          placeholder="Pokémon" 
+          onSelect={selectPokemon} 
+        />
         <Checkbox onChange={onChange}>In the party?</Checkbox>
       </div>
       <button onClick={() => {addPokemon()}}>Create</button>

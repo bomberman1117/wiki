@@ -64,8 +64,8 @@ body{
     height: 50px;
 }
 .icon-small {
-    width: 20px;
-    height: 20px;
+    width: auto;
+    height: 2vh;
 }
 .story-card {
     font-size: large;
@@ -131,4 +131,10 @@ body{
 }
 .ant-modal .ant-modal-content .ant-modal-header .ant-modal-close{
     color: aqua;
+}
+.back-button {
+    width: 10%
+}
+.row .party {
+    margin-bottom: 10px;
 }

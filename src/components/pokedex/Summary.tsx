@@ -55,7 +55,7 @@ const Summary = ({ entry = {} }: { entry: any }) => {
           {/* display the pokemon's name */}
           <div className="col-9 name">{entry.name}</div>
           {/* display the pokemon's dokedex entry */}
-          <div className="col-2 id">{pokedex_id}</div>
+          <div className="col id">{pokedex_id}</div>
         </div>
         {/* display the full image of the pokemon */}
         <img src={imgURL} alt={entry.name} />
