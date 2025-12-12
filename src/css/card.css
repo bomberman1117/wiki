@@ -8,14 +8,14 @@
     margin-bottom: 5px;
 }
 .party-image {
-    width: 100%;
+    width: 65%;
     height: auto;
     align-self: center;
 }
 .party-human {
     margin-top: 5%;
     margin-bottom: 5%;
-    width: 75%;
+    width: 40%;
     height: auto;
     align-self: center;
 }

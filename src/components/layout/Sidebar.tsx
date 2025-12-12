@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <div className="Sidebar">
       <a href="/">
-        {import.meta.env.VITE_SAFE_MODE == 1 && <img
+        {import.meta.env.VITE_SAFE_MODE == 0 && <img
           className="logo"
           src="/images/Logo.png"
           alt={"Welcome to Amoros"}

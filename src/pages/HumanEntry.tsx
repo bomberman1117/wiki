@@ -9,10 +9,11 @@ import Party from "../components/pokedex/Party";
 
 const HumanEntry = ({is_admin = false}: {is_admin?: boolean}) => {
   const params = useParams();
-  const [pageData, setPageData] = useState<any>({});
+  let bio:any = {}
+  let bonds = {}
+  const [pageData, setPageData] = useState<any>({bio: {}, bonds: [{}]});
   const [article, setArticle] = useState<any>({})
   const [party, setParty] = useState<any>([])
-  const [humans, setHumans] = useState<any>([])
   const navigate = useNavigate();
   useEffect(() => {
     const id = params.name
@@ -33,7 +34,7 @@ const HumanEntry = ({is_admin = false}: {is_admin?: boolean}) => {
         const partyHumans = await axios.get(
           `http://localhost:3030/humanParty/${id}`
         )
-        setPageData(res.data[0]);
+        setPageData(res.data);
         setArticle(text.data);
         setFullParty(party.data, partyHumans.data)
 
@@ -43,23 +44,18 @@ const HumanEntry = ({is_admin = false}: {is_admin?: boolean}) => {
     };
     fetchPokemon();
   }, [params.name]);
+
   return (
     <div className="pokedex-entry">
-      <h1>{pageData.name}</h1>
+      <h1>{pageData.bio.name}</h1>
       <div className="row">
         <div className="col-9">
-          <Article is_admin={is_admin} article={article} title={pageData.name} />
+          <Article is_admin={is_admin} article={article} title={pageData.bio.name} />
           <Party party={party}/>
         </div>
         <div className="col-3">
           <HumanSummary entry={pageData} />
         </div>
-      </div>
-      <div className="row">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          <ArrowLeftOutlined />
-          {" Back"}
-        </button>
       </div>
     </div>
   );

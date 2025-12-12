@@ -87,11 +87,11 @@ const Summary = ({ entry = {} }: { entry: any }) => {
         {/* display the name of the evolved form of this pokemomn (if it exists) */}
         {entry.evolution && section("Evolution", entry.evolution)}
         {/* display the seen data of the pokemon */}
-        <View title="Seen By" data={seeData} />
+        {seeData.includes(1) && <View title="Seen By" data={seeData} />}
         {/* display the battle data of the pokemon */}
-        <View title="Battled" data={battleData} />
+        {battleData.includes(1) && <View title="Battled" data={battleData} />}
         {/* display the capture data of the pokemon */}
-        <View title="Caught By" data={captureData} />
+        {captureData.includes(1) && <View title="Caught By" data={captureData} />}
       </div>
     </div>
   );

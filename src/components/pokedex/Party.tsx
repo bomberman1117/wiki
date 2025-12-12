@@ -38,7 +38,7 @@ const Party = ({party =[]}: {party: any[]}) => {
       return (
         <div>
         <h3>Boxed Party</h3>
-          <div className='row party'>
+          <div id="party" className='row party'>
             {Cards}
           </div>
       </div>

@@ -29,7 +29,7 @@ const PokedexEntry = ({ is_admin = false }: { is_admin?: boolean }) => {
         ).then((text) => {
           setArticle(text.data)
 
-          setPageData(res.data[0]);
+          setPageData(res.data);
         });
       } catch (err) {
         console.log(err);

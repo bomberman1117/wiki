@@ -3,18 +3,21 @@ import "../../css/summary.css";
 import "../../css/style.css";
 import { getColor } from "../../util/commonFunctions";
 import StatSummary from "./StatSummary";
+import Bonds from "./Bonds";
 
 const HumanSummary = ({ entry = {} }: { entry: any }) => {
-  const imgURL = `/images/Humans/Full/${entry.file_name}`;
-  const type_1 = getColor(entry.type_1);
-  const type_2 = getColor(entry.type_2);
+  const bio = entry.bio
+  const bonds = entry.bonds
+  const imgURL = `/images/Humans/Full/${bio.file_name}`;
+  const type_1 = getColor(bio.type_1);
+  const type_2 = getColor(bio.type_2);
   const stats = {
-    top_atk: entry.main_atk,
-    bot_atk: entry.alt_atk,
-    top_def: entry.main_def,
-    bot_def: entry.alt_def,
-    speed: entry.speed,
-    stamina: entry.stamina,
+    top_atk: bio.main_atk,
+    bot_atk: bio.alt_atk,
+    top_def: bio.main_def,
+    bot_def: bio.alt_def,
+    speed: bio.speed,
+    stamina: bio.stamina,
   };
   const section = (input: string, data: any) => {
     return (
@@ -24,14 +27,16 @@ const HumanSummary = ({ entry = {} }: { entry: any }) => {
       </div>
     );
   };
+
   return (
     <div className="summary">
       <div className="container">
         <div className="row name-id">
-          <div className="name">{entry.name}</div>
+          <div className="name">{bio.name}</div>
         </div>
-        <img src={imgURL} alt={entry.name} />
-        {section("Pronouns", entry.pronouns)}
+        <img src={imgURL} alt={bio.name} />
+        {section("Pronouns", bio.pronouns)}
+        
         <div className="title">
           <div>Type(s)</div>
           <div className="body">
@@ -53,6 +58,7 @@ const HumanSummary = ({ entry = {} }: { entry: any }) => {
           </div>
         </div>
         <StatSummary stats={stats} />
+        {bonds[0].name && <Bonds entry={bonds} />}
       </div>
     </div>
   );
